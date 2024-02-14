@@ -9,10 +9,10 @@ class CalculatorScreen extends StatefulWidget {
   State<CalculatorScreen> createState() => _CalculatorScreenState();
 }
 
-String inputuser = "";
-String result = "";
-
 class _CalculatorScreenState extends State<CalculatorScreen> {
+  String inputuser = "";
+  String result = "";
+
   void calculate(String text) {
     setState(() {
       inputuser = inputuser + text;
@@ -60,14 +60,24 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 15.0, vertical: 8.0),
-                      child: Text(
-                        result,
-                        style: TextStyle(
-                          color: CalulatorColors.textcolor2,
-                          fontSize: 75,
-                          fontWeight: FontWeight.w100,
+                      child: Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: SizedBox(
+                          height: 100,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              Text(
+                                result,
+                                style: TextStyle(
+                                  color: CalulatorColors.textcolor2,
+                                  fontSize: 75,
+                                  fontWeight: FontWeight.w100,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        textAlign: TextAlign.end,
                       ),
                     ),
                   ],
