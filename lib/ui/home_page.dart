@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:ios_calculator/constants/constants.dart';
 import 'package:math_expressions/math_expressions.dart';
 
-class Calculator extends StatefulWidget {
-  const Calculator({super.key});
+class CalculatorScreen extends StatefulWidget {
+  const CalculatorScreen({super.key});
 
   @override
-  State<Calculator> createState() => _CalculatorState();
+  State<CalculatorScreen> createState() => _CalculatorScreenState();
 }
 
 String inputuser = "";
 String result = "";
 
-class _CalculatorState extends State<Calculator> {
+class _CalculatorScreenState extends State<CalculatorScreen> {
   void calculate(String text) {
     setState(() {
       inputuser = inputuser + text;
@@ -38,13 +38,23 @@ class _CalculatorState extends State<Calculator> {
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 15.0, vertical: 8.0),
-                      child: Text(
-                        inputuser,
-                        style: TextStyle(
-                          color: textcolor2,
-                          fontSize: 25,
+                      child: SizedBox(
+                        height: 35,
+                        child: Directionality(
+                          textDirection: TextDirection.rtl,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              Text(
+                                inputuser,
+                                style: TextStyle(
+                                  color: CalulatorColors.textcolor2,
+                                  fontSize: 25,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        textAlign: TextAlign.end,
                       ),
                     ),
                     Padding(
@@ -53,7 +63,7 @@ class _CalculatorState extends State<Calculator> {
                       child: Text(
                         result,
                         style: TextStyle(
-                          color: textcolor2,
+                          color: CalulatorColors.textcolor2,
                           fontSize: 75,
                           fontWeight: FontWeight.w100,
                         ),
@@ -73,8 +83,8 @@ class _CalculatorState extends State<Calculator> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      _getbuttons("AC", "+/-", "%", "÷"),
-                      _getbuttons("7", "8", "9", "×"),
+                      _getbuttons("AC", "+/-", "%", "/"),
+                      _getbuttons("7", "8", "9", "*"),
                       _getbuttons("4", "5", "6", "-"),
                       _getbuttons("1", "2", "3", "+"),
                       _getbuttons2("0", ".", "="),
@@ -270,7 +280,7 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
-  bool _isOperator(String text) {
+  bool isOperator(String text) {
     var list = ["AC", "+/-", "%"];
 
     for (var element in list) {
@@ -281,8 +291,8 @@ class _CalculatorState extends State<Calculator> {
     return false;
   }
 
-  bool _isOperator2(String text) {
-    var list = ["=", "+", "-", "×", "÷"];
+  bool isOperator2(String text) {
+    var list = ["=", "+", "-", "*", "/"];
 
     for (var element in list) {
       if (text == element) {
@@ -293,20 +303,20 @@ class _CalculatorState extends State<Calculator> {
   }
 
   Color buttoncolors(String text) {
-    if (_isOperator(text)) {
-      return buttoncolor2;
-    } else if (_isOperator2(text)) {
-      return buttoncolor3;
+    if (isOperator(text)) {
+      return CalulatorColors.buttoncolor2;
+    } else if (this.isOperator2(text)) {
+      return CalulatorColors.buttoncolor3;
     } else {
-      return buttonColor1;
+      return CalulatorColors.buttonColor1;
     }
   }
 
   Color textcolor(String text) {
-    if (_isOperator(text)) {
-      return textcolor1;
+    if (this.isOperator(text)) {
+      return CalulatorColors.textcolor1;
     } else {
-      return textcolor2;
+      return CalulatorColors.textcolor2;
     }
   }
 }
