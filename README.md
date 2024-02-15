@@ -1,16 +1,21 @@
-# ios_calculator
+# IOS Calculator
 
-A new Flutter project.
+![mcokup](assets/mockup.png)
 
-## Getting Started
+## Overview 
 
-This project is a starting point for a Flutter application.
+This is a simple ios clone calculator that can calculate basic math expressions like add numbers, subtract, devide, multiply and even calculate the percentage of them. The app has been written with pure dart language and the app is fully responsive.
 
-A few resources to get you started if this is your first Flutter project:
+## Packages Used 
+ - hexcolor
+ - math_expressions
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Technologies Used 
+ - Language : Dart
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Project Setup 
+To run the application:
+
+ 1. Clone the repository.
+ 2. Open the project in Android Studio / vscode.
+ 3. Build and run the app on an Android emulator or physical device by your choice.
